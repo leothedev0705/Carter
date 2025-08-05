@@ -13,20 +13,6 @@
       "destination": "/frontend/$1"
     }
   ],
-  "env": {
-    "NEXT_PUBLIC_MEDUSA_BACKEND_URL": "@medusa-backend-url",
-    "NEXT_PUBLIC_SANITY_PROJECT_ID": "@sanity-project-id",
-    "NEXT_PUBLIC_SANITY_DATASET": "@sanity-dataset",
-    "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY": "@stripe-publishable-key"
-  },
-  "build": {
-    "env": {
-      "NEXT_PUBLIC_MEDUSA_BACKEND_URL": "@medusa-backend-url",
-      "NEXT_PUBLIC_SANITY_PROJECT_ID": "@sanity-project-id",
-      "NEXT_PUBLIC_SANITY_DATASET": "@sanity-dataset",
-      "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY": "@stripe-publishable-key"
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
