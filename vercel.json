@@ -27,14 +27,6 @@
       "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY": "@stripe-publishable-key"
     }
   },
-  "functions": {
-    "frontend/app/**/*.ts": {
-      "maxDuration": 10
-    },
-    "frontend/app/**/*.tsx": {
-      "maxDuration": 10
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
