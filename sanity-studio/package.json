@@ -1,0 +1,32 @@
+{
+  "name": "carter-chaos-sanity-studio",
+  "version": "1.0.0",
+  "private": true,
+  "keywords": [
+    "sanity",
+    "cms"
+  ],
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "check": "sanity check"
+  },
+  "dependencies": {
+    "@sanity/icons": "^2.8.0",
+    "@sanity/ui": "^2.0.0",
+    "@sanity/vision": "^3.22.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sanity": "^3.22.0",
+    "styled-components": "^6.1.6"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/styled-components": "^5.1.32",
+    "typescript": "^5.3.3"
+  },
+  "browserslist": [
+    "> 0.2% and supports es6-module and supports es6-module-dynamic-import and not dead and not IE 11"
+  ]
+}

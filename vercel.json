@@ -1,0 +1,57 @@
+{
+  "version": 2,
+  "name": "carter-chaos-frontend",
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "frontend/$1"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_MEDUSA_BACKEND_URL": "@medusa-backend-url",
+    "NEXT_PUBLIC_SANITY_PROJECT_ID": "@sanity-project-id",
+    "NEXT_PUBLIC_SANITY_DATASET": "@sanity-dataset",
+    "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY": "@stripe-publishable-key"
+  },
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_MEDUSA_BACKEND_URL": "@medusa-backend-url",
+      "NEXT_PUBLIC_SANITY_PROJECT_ID": "@sanity-project-id",
+      "NEXT_PUBLIC_SANITY_DATASET": "@sanity-dataset",
+      "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY": "@stripe-publishable-key"
+    }
+  },
+  "functions": {
+    "frontend/app/**/*.ts": {
+      "maxDuration": 10
+    },
+    "frontend/app/**/*.tsx": {
+      "maxDuration": 10
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ]
+} 

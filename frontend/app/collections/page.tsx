@@ -1,0 +1,181 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import Image from 'next/image'
+import { ArrowRight, Filter } from 'lucide-react'
+import { getCollections, SanityCollection, getImageUrl } from '@/lib/sanity'
+
+const categories = [
+  { id: 'all', name: 'All Collections' },
+  { id: 'statement', name: 'Statement Pieces' },
+  { id: 'basics', name: 'Essentials' },
+  { id: 'exclusive', name: 'Limited Edition' },
+]
+
+export default function CollectionsPage() {
+  const [collections, setCollections] = useState<SanityCollection[]>([])
+  const [loading, setLoading] = useState(true)
+  const [selectedCategory, setSelectedCategory] = useState('all')
+
+  useEffect(() => {
+    const fetchCollections = async () => {
+      try {
+        const collectionsData = await getCollections()
+        setCollections(collectionsData)
+      } catch (error) {
+        console.error('Error fetching collections:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchCollections()
+  }, [])
+
+  const filteredCollections = collections.filter(collection => 
+    selectedCategory === 'all' || collection.category === selectedCategory
+  )
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-beige pt-20">
+        <div className="container-custom py-16">
+          <div className="text-center">
+            <div className="loading-dots">Loading collections...</div>
+            <p className="text-charcoal-light mt-4">Fetching your amazing collections...</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="min-h-screen bg-beige pt-20">
+      {/* Header */}
+      <div className="bg-beige-secondary border-b border-gray-200">
+        <div className="container-custom py-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h1 className="heading-secondary mb-4 text-charcoal">Collections</h1>
+            <p className="text-charcoal-light text-lg max-w-2xl mx-auto">
+              Curated collections that tell a story. Each piece designed to elevate 
+              your street style and express your individual chaos.
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Category Filter */}
+      <div className="container-custom py-8">
+        <div className="flex flex-wrap gap-2 justify-center">
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setSelectedCategory(category.id)}
+              className={`px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300 ${
+                selectedCategory === category.id
+                  ? 'bg-primary-orange text-white'
+                  : 'bg-white text-charcoal hover:text-primary-orange border border-gray-200'
+              }`}
+            >
+              {category.name}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Collections Grid */}
+      <div className="container-custom pb-16">
+        {filteredCollections.length === 0 ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-16"
+          >
+            <p className="text-charcoal-light text-lg mb-4">No collections found.</p>
+          </motion.div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredCollections.map((collection, index) => (
+              <motion.div
+                key={collection._id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.02 }}
+                className="group cursor-pointer"
+              >
+                <Link href={`/collections/${collection.slug.current}`}>
+                  <div className="relative overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300">
+                    {/* Collection image */}
+                    <div className="aspect-[4/5] bg-gradient-to-br from-gray-100 to-gray-200 relative overflow-hidden">
+                      <Image
+                        src={getImageUrl(collection.image)}
+                        alt={collection.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        onError={(e) => {
+                          // Fallback to placeholder if image fails to load
+                          const target = e.target as HTMLImageElement
+                          target.style.display = 'none'
+                          target.nextElementSibling?.classList.remove('hidden')
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center hidden">
+                        <span className="text-gray-500 text-lg font-semibold">{collection.title}</span>
+                      </div>
+                      
+                      {/* Badges */}
+                      <div className="absolute top-4 left-4 flex flex-col gap-2">
+                        {collection.isNew && (
+                          <span className="bg-primary-orange text-white text-xs font-semibold px-3 py-1 rounded-full">
+                            NEW
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 via-transparent to-transparent" />
+                      
+                      {/* Content overlay */}
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <div className="mb-2">
+                          <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-primary-orange transition-colors duration-300">
+                            {collection.title}
+                          </h3>
+                          {collection.subtitle && (
+                            <p className="text-white/90 text-sm font-medium">
+                              {collection.subtitle}
+                            </p>
+                          )}
+                        </div>
+                        {collection.description && (
+                          <p className="text-white/80 text-sm mb-3 line-clamp-2">
+                            {collection.description}
+                          </p>
+                        )}
+                        <div className="flex items-center justify-between">
+                          <span className="text-white/70 text-sm">
+                            {collection.itemCount} items
+                          </span>
+                          <ArrowRight className="w-5 h-5 text-white transform transition-transform group-hover:translate-x-1" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+} 

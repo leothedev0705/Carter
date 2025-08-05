@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles for Carter Chaos */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-beige text-charcoal font-sans antialiased;
+    @apply selection:bg-primary-orange selection:text-white;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-beige-secondary;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-orange rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-orange-dark;
+  }
+}
+
+@layer components {
+  /* Button styles */
+  .btn-primary {
+    @apply bg-primary-orange hover:bg-primary-orange-dark text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 ease-in-out;
+    @apply hover:shadow-orange transform hover:scale-105 active:scale-95 shadow-button;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border-2 border-primary-orange text-primary-orange hover:bg-primary-orange hover:text-white;
+    @apply font-semibold py-3 px-6 rounded-lg transition-all duration-300 ease-in-out;
+    @apply transform hover:scale-105 active:scale-95 shadow-button;
+  }
+  
+  .btn-outline {
+    @apply bg-transparent border-2 border-charcoal text-charcoal hover:bg-charcoal hover:text-beige;
+    @apply font-semibold py-3 px-6 rounded-lg transition-all duration-300 ease-in-out;
+    @apply transform hover:scale-105 active:scale-95 shadow-button;
+  }
+  
+  /* Card styles */
+  .card {
+    @apply bg-white border border-gray-200 rounded-xl p-6 shadow-sm;
+    @apply hover:border-primary-orange transition-all duration-300 ease-in-out;
+    @apply backdrop-blur-sm;
+  }
+  
+  .card-glow {
+    @apply card hover:shadow-orange-lg;
+  }
+  
+  /* Input styles */
+  .input-field {
+    @apply bg-white border border-gray-300 text-charcoal placeholder-charcoal-light;
+    @apply focus:border-primary-orange focus:ring-1 focus:ring-primary-orange focus:outline-none;
+    @apply py-3 px-4 rounded-lg transition-all duration-300 ease-in-out;
+  }
+  
+  /* Text styles */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-orange to-primary-orange-light bg-clip-text text-transparent;
+  }
+  
+  .heading-primary {
+    @apply font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight;
+  }
+  
+  .heading-secondary {
+    @apply font-display text-2xl md:text-4xl lg:text-5xl font-semibold tracking-tight;
+  }
+  
+  /* Animation utilities */
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  .hover-lift {
+    @apply transform transition-transform duration-300 ease-in-out hover:scale-105 hover:-translate-y-1;
+  }
+  
+  .hover-tilt {
+    @apply transition-transform duration-300 ease-in-out;
+  }
+  
+  .hover-tilt:hover {
+    transform: perspective(1000px) rotateX(10deg) rotateY(10deg);
+  }
+  
+  /* Loading animation */
+  .loading-dots {
+    @apply relative;
+  }
+  
+  .loading-dots::after {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-full;
+    animation: loading-dots 1.5s infinite linear;
+  }
+  
+  /* Layout utilities */
+  .container-custom {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  /* Product grid */
+  .product-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+  }
+  
+  /* Backdrop blur utilities */
+  .backdrop-blur-custom {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+@layer utilities {
+  /* Custom utilities */
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(44, 44, 44, 0.1);
+  }
+  
+  .text-shadow-orange {
+    text-shadow: 0 0 10px rgba(196, 106, 62, 0.3);
+  }
+  
+  .border-gradient {
+    border-image: linear-gradient(135deg, #C46A3E, #B05A2E) 1;
+  }
+}
+
+/* Custom animations */
+@keyframes loading-dots {
+  0%, 20% { content: ''; }
+  40% { content: '.'; }
+  60% { content: '..'; }
+  80%, 100% { content: '...'; }
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  .heading-primary {
+    @apply text-3xl;
+  }
+  
+  .heading-secondary {
+    @apply text-xl;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  body {
+    @apply bg-dark-bg text-dark-text;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-primary {
+    @apply border-2 border-charcoal;
+  }
+  
+  .card {
+    @apply border-2;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+} 

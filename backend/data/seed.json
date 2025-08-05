@@ -1,0 +1,372 @@
+{
+  "store": {
+    "currencies": ["usd"],
+    "default_currency_code": "usd",
+    "name": "Carter Chaos Store",
+    "swap_link_template": "https://carterchaos.com/swap/{id}"
+  },
+  "users": [
+    {
+      "email": "admin@carterchaos.com",
+      "password": "supersecret"
+    }
+  ],
+  "regions": [
+    {
+      "id": "reg_usa",
+      "name": "USA",
+      "currency_code": "usd",
+      "tax_rate": 0,
+      "payment_providers": ["manual"],
+      "fulfillment_providers": ["manual"],
+      "countries": ["us"]
+    }
+  ],
+  "shipping_options": [
+    {
+      "name": "Standard Shipping",
+      "region_id": "reg_usa",
+      "provider_id": "manual",
+      "data": {
+        "id": "manual-fulfillment"
+      },
+      "price_type": "flat_rate",
+      "amount": 500
+    },
+    {
+      "name": "Express Shipping",
+      "region_id": "reg_usa",
+      "provider_id": "manual",
+      "data": {
+        "id": "manual-fulfillment"
+      },
+      "price_type": "flat_rate",
+      "amount": 1500
+    }
+  ],
+  "products": [
+    {
+      "title": "Chaos Hoodie Black",
+      "subtitle": "Premium streetwear hoodie",
+      "description": "The ultimate expression of urban chaos. This premium hoodie features our signature design with quality construction for the streets.",
+      "handle": "chaos-hoodie-black",
+      "is_giftcard": false,
+      "weight": 500,
+      "images": [
+        "https://via.placeholder.com/800x800/000000/FF0000?text=Chaos+Hoodie"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": ["XS", "S", "M", "L", "XL", "XXL"]
+        }
+      ],
+      "variants": [
+        {
+          "title": "XS",
+          "sku": "CH-BLACK-XS",
+          "ean": "1234567890123",
+          "inventory_quantity": 25,
+          "price": 8999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "XS"
+            }
+          ]
+        },
+        {
+          "title": "S",
+          "sku": "CH-BLACK-S",
+          "ean": "1234567890124",
+          "inventory_quantity": 25,
+          "price": 8999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "S"
+            }
+          ]
+        },
+        {
+          "title": "M",
+          "sku": "CH-BLACK-M",
+          "ean": "1234567890125",
+          "inventory_quantity": 25,
+          "price": 8999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "M"
+            }
+          ]
+        },
+        {
+          "title": "L",
+          "sku": "CH-BLACK-L",
+          "ean": "1234567890126",
+          "inventory_quantity": 25,
+          "price": 8999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "L"
+            }
+          ]
+        },
+        {
+          "title": "XL",
+          "sku": "CH-BLACK-XL",
+          "ean": "1234567890127",
+          "inventory_quantity": 25,
+          "price": 8999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "XL"
+            }
+          ]
+        },
+        {
+          "title": "XXL",
+          "sku": "CH-BLACK-XXL",
+          "ean": "1234567890128",
+          "inventory_quantity": 25,
+          "price": 8999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "XXL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Red Devil Tee",
+      "subtitle": "Signature red statement piece",
+      "description": "Bold red design that commands attention. Made from premium cotton with our iconic devil graphics.",
+      "handle": "red-devil-tee",
+      "is_giftcard": false,
+      "weight": 200,
+      "images": [
+        "https://via.placeholder.com/800x800/FF0000/000000?text=Red+Devil+Tee"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": ["XS", "S", "M", "L", "XL", "XXL"]
+        }
+      ],
+      "variants": [
+        {
+          "title": "XS",
+          "sku": "RDT-RED-XS",
+          "ean": "1234567890129",
+          "inventory_quantity": 50,
+          "price": 3999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "XS"
+            }
+          ]
+        },
+        {
+          "title": "S",
+          "sku": "RDT-RED-S",
+          "ean": "1234567890130",
+          "inventory_quantity": 50,
+          "price": 3999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "S"
+            }
+          ]
+        },
+        {
+          "title": "M",
+          "sku": "RDT-RED-M",
+          "ean": "1234567890131",
+          "inventory_quantity": 50,
+          "price": 3999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "M"
+            }
+          ]
+        },
+        {
+          "title": "L",
+          "sku": "RDT-RED-L",
+          "ean": "1234567890132",
+          "inventory_quantity": 50,
+          "price": 3999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "L"
+            }
+          ]
+        },
+        {
+          "title": "XL",
+          "sku": "RDT-RED-XL",
+          "ean": "1234567890133",
+          "inventory_quantity": 50,
+          "price": 3999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "XL"
+            }
+          ]
+        },
+        {
+          "title": "XXL",
+          "sku": "RDT-RED-XXL",
+          "ean": "1234567890134",
+          "inventory_quantity": 50,
+          "price": 3999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "XXL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Street Chaos Joggers",
+      "subtitle": "Urban comfort meets style",
+      "description": "Premium joggers designed for the streets. Comfortable, stylish, and built for the chaos of city life.",
+      "handle": "street-chaos-joggers",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://via.placeholder.com/800x800/000000/FFFFFF?text=Chaos+Joggers"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": ["XS", "S", "M", "L", "XL", "XXL"]
+        }
+      ],
+      "variants": [
+        {
+          "title": "XS",
+          "sku": "SCJ-BLACK-XS",
+          "ean": "1234567890135",
+          "inventory_quantity": 30,
+          "price": 6999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "XS"
+            }
+          ]
+        },
+        {
+          "title": "S",
+          "sku": "SCJ-BLACK-S",
+          "ean": "1234567890136",
+          "inventory_quantity": 30,
+          "price": 6999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "S"
+            }
+          ]
+        },
+        {
+          "title": "M",
+          "sku": "SCJ-BLACK-M",
+          "ean": "1234567890137",
+          "inventory_quantity": 30,
+          "price": 6999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "M"
+            }
+          ]
+        },
+        {
+          "title": "L",
+          "sku": "SCJ-BLACK-L",
+          "ean": "1234567890138",
+          "inventory_quantity": 30,
+          "price": 6999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "L"
+            }
+          ]
+        },
+        {
+          "title": "XL",
+          "sku": "SCJ-BLACK-XL",
+          "ean": "1234567890139",
+          "inventory_quantity": 30,
+          "price": 6999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "XL"
+            }
+          ]
+        },
+        {
+          "title": "XXL",
+          "sku": "SCJ-BLACK-XXL",
+          "ean": "1234567890140",
+          "inventory_quantity": 30,
+          "price": 6999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "XXL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Carter Cap Red",
+      "subtitle": "Signature streetwear cap",
+      "description": "Classic cap with Carter Chaos branding. Perfect finishing touch for any street outfit.",
+      "handle": "carter-cap-red",
+      "is_giftcard": false,
+      "weight": 150,
+      "images": [
+        "https://via.placeholder.com/800x800/FF0000/000000?text=Carter+Cap"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": ["One Size"]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "sku": "CCR-RED-OS",
+          "ean": "1234567890141",
+          "inventory_quantity": 100,
+          "price": 2999,
+          "options": [
+            {
+              "option": "Size",
+              "value": "One Size"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+} 
